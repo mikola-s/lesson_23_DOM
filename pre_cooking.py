@@ -117,12 +117,19 @@ def insert_link_in_index_html(files_data):
         html.write(re.sub('(</body>)', (replace_text + '</body>'), html_data))
 
 
-def insert_link_in_readme_md(name, end):
+def insert_link_in_readme_md(files_data, file_name):
     """   вставляет в readme.md ссылку на файл задания после этого задания
     [html file](./name/name.html)
-
     """
-    pass
+    with open(file_name, 'r') as md_file:
+        readme = md_file.read()
+
+    for link_place in files_data[::-1]:
+        link = "[папка с заданием {name}]({name}/)\n\n".format(**link_place)
+        readme = readme[:link_place['end']:] + link + readme[link_place['end']::]
+
+    with open(file_name, 'w') as md_file:
+        md_file.write(readme)
 
 
 the_file_data = collect_file_data(the_file_name)
@@ -133,4 +140,6 @@ the_file_data = collect_file_data(the_file_name)
 #
 # create_htmls(the_template_html, the_file_data)
 
-insert_link_in_index_html(the_file_data)
+# insert_link_in_index_html(the_file_data)
+
+insert_link_in_readme_md(the_file_data, the_file_name)
