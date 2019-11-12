@@ -94,19 +94,6 @@ def create_htmls(template_html, html_data):
             html_file.write(template_html.format(**html_data[counter]))
 
 
-def insert_in_index_html(name):
-    """   вставляет в index.html ссылку на файл name/name.html """
-    pass
-
-
-def insert_in_readme_md(name, end):
-    """   вставляет в readme.md ссылку на файл задания после этого задания
-    [html file](./name/name.html)
-
-    """
-    pass
-
-
 def create_dir(name):
     """ создает файлы index.html, app.js, readme.md, в папке f_data['name']"""
 
@@ -119,22 +106,31 @@ def create_files(f_data):
     create_app_js(f_data)
 
 
+def insert_link_in_index_html(files_data):
+    """   вставляет в index.html ссылку на файл name/name.html """
+    replace_text = ''
+    for task in files_data:
+        replace_text += '<a href="{name}/{name}.html">task {name}</a><br>\n'.format(**task)
+    with open('index.html', 'r') as html:
+        html_data = html.read()
+    with open('index.html', 'w') as html:
+        html.write(re.sub('(</body>)', (replace_text + '</body>'), html_data))
+
+
+def insert_link_in_readme_md(name, end):
+    """   вставляет в readme.md ссылку на файл задания после этого задания
+    [html file](./name/name.html)
+
+    """
+    pass
+
+
 the_file_data = collect_file_data(the_file_name)
 
-for task in the_file_data:
-    create_dir(task['name'])
-    create_files(task)
+# for task in the_file_data:
+#     create_dir(task['name'])
+#     create_files(task)
+#
+# create_htmls(the_template_html, the_file_data)
 
-create_htmls(the_template_html, the_file_data)
-
-# print(*collect_file_data(the_file_name), sep='\n\n')
-
-# ex_lists = (find(readme_md_file))
-
-# print(ex_lists[3], sep='\n')
-
-# result = replace(lineP)
-# print(result)
-
-# replace(readme_md_file)
-# print(readme_md_file)
+insert_link_in_index_html(the_file_data)
