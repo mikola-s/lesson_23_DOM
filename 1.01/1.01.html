@@ -3,19 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>1.01</title>
+    <style type="text/css">
+        #navigator{
+            max-width: 50%;
+            /*min-width: 400px;*/
+            position: absolute;
+            right: 0;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        details{
+            margin-top: 40px;
+        }
+        #buttons {
+            position: fixed;
+            right: 10px;
+        }
+        .images {
+            max-height: 300px;
+            max-width: 300px;
+        }
+    </style>
 </head>
 <body>
 
-<div style="max-width: 50%; min-width: 400px">
-    <button id="home" onclick="window.location='../index.html'">table of content</button>
-    <button id="next" onclick="window.location='../1.04/1.04.html'">1.04</button>
+<div id="navigator">
+    <div id="buttons">
+        <button id="home" onclick="window.location='../index.html'">table of content</button>
+        <button id="next" onclick="window.location='../1.02/1.02.html'">1.02</button>
+    </div>
     <details>
         <summary>1.01 task (spoiler)</summary>
-        <p id="content">1.01. Создайте сами в html Картинку img с айди myimg. Потом уже в js Сделать 2 prompt. Где вы будете спрашивать у человека ссылку на картинку. И так же на сколько градусов повернуть. Проверяете, чтобы в первом промте была ссылка. А во втором было только число. И вставялете пять раз картину с одним и тем же рисунком и каждый раз крутите эту картинку на тот градус, что указали в промт. Например ввёл человек 45, то первая картинка с поворотом на 45, вторая на 90, 3 - 135 и т.д.
+        <p id="content">1.01. Создайте сами в html Картинку img с айди myimg.
+            Потом уже в js Сделать 2 prompt. Где вы будете спрашивать у человека ссылку на картинку.
+            И так же на сколько градусов повернуть. Проверяете, чтобы в первом промте была ссылка.
+            А во втором было только число. И вставялете пять раз картину с одним и тем же рисунком
+            и каждый раз крутите эту картинку на тот градус, что указали в промт.
+            Например ввёл человек 45, то первая картинка с поворотом на 45, вторая на 90, 3 - 135 и т.д.
         &lt img id=myimg src=ssilkaNaImgIzPrompt style=(vspomnite kak krutit v css) &rt
         PS. rotate...
         </p>
     </details>
 </div>
+
+<!--  шкодить сюда   -->
+
+<img id="myimg" src="" alt="you img">
+
+<script src="app.js"></script>
+
 </body>
 </html>
