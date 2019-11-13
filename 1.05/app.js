@@ -7,13 +7,22 @@
 // добавление нескольких тегов с ID
 let arr = ['tag', 'any_tag', 'some_tag', 'random_tag', 'more_tag',].map( (val, index) => {
     document.body.appendChild(document.createElement(val)).id = `tag${index}`
-    document.getElementById(`tag${index}`).innerText = `тег "${val}" с ID "tag${index}"\n`
+    document.getElementById(`tag${index}`).className = `class${index}`
+    document.getElementById(`tag${index}`).innerText = `тег "${val}" с ID "tag${index}" и классом class${index}\n`
 })
 
-let str = prompt('Пользователь! \n введи ИД тега')
+let argument = prompt('Пользователь! \n введи аргумент например \'#name\' или \'.name\'')
 
-function getInnerTextOfElement(str) {
-    return document.getElementById(str) != null ? document.getElementById(str).innerText : false
+function getInnerTextOfElement(arg) {
+    if (arg != null) {
+        if (arg.startsWith('#')) {
+            return document.getElementById(arg.slice(1)).innerText
+        } else if (arg.startsWith('.')) {
+            // console.log(document.getElementsByClassName(arg.slice(1)))
+            return document.getElementsByClassName(arg.slice(1))[0].innerText
+        }
+        return false
+    }
 }
 
-alert(getInnerTextOfElement(str))
+alert(getInnerTextOfElement(argument))
