@@ -7,9 +7,6 @@ import os
 
 the_file_name = 'readme.md'
 
-with open('templates/template.html', 'r') as current_file:
-    the_template_html = current_file.read()
-
 
 def create_ex_list_name(file_data):
     """
@@ -41,8 +38,10 @@ def append_in_ex_list_end(file_data, ex_list_name):
         'content': string, текст задания из file_data от start до end
     }
     """
-    dash_num_pos = re.finditer(r'------', file_data)  # obj Match конца задания
+
+    dash_num_pos = re.finditer(r'\[папка', file_data)  # obj Match конца задания
     i = 0
+    print()
     for match_obj_tire in dash_num_pos:
         ex_list_name[i]['end'] = match_obj_tire.start()
         ex_list_name[i]['content'] = match_obj_tire.string[ex_list_name[i]['start']:ex_list_name[i]['end']]
@@ -63,30 +62,32 @@ def collect_file_data(file_name):
     return append_in_ex_list_end(file_data, create_ex_list_name(file_data))
 
 
-# ======================================
-
-def create_readme_md(f_data):
+def create_readme_md(file_data):
     """    создает в папке с именем name файл с именем readme.md и записывает в него данные из content """
-    with open('{name}/readme.md'.format(**f_data), 'w') as current_file:
-        current_file.write('> ' + f_data['content'])
+
+    with open('{name}/readme.md'.format(**file_data), 'w') as current_file:
+        current_file.write('> ' + file_data['content'])
 
 
-def create_app_js(f_data):
+def create_app_js(file_data):
     """    создает в папке с именем name файл с именем app.js и записывает
     в него данные из content
     """
-    with open('{name}/app.js'.format(**f_data), 'w') as current_file:
-        current_file.write(f_data['content'])
+
+    with open('{name}/app.js'.format(**file_data), 'w') as current_file:
+        current_file.write(file_data['content'])
 
 
-def create_htmls(template_html, html_data):
+def create_htmls(html_data):
     """    создает в папке с именем name файл с именем name + '.html'
     записывает в него шаблон из папки template
     путь до предыдущего prev, следующего next заданий
     и данные из content
     """
 
-    # """<button id = "prev" onclick = "window.location='../{prev}/{prev}.html'"> {prev} </button>""".fotmat()
+    with open('templates/template.html', 'r') as html_template:
+        template_html = html_template.read()
+
     for counter in range(1, len(html_data) - 1):
         html_data[counter]['prev'] = html_data[counter - 1]['name']
         html_data[counter]['next'] = html_data[counter + 1]['name']
@@ -101,18 +102,16 @@ def create_dir(name):
         os.makedirs(name)
 
 
-def create_files(f_data):
-    create_readme_md(f_data)
-    create_app_js(f_data)
-
-
 def insert_link_in_index_html(files_data):
     """   вставляет в index.html ссылку на файл name/name.html """
+
     replace_text = ''
     for task in files_data:
         replace_text += '<a href="{name}/{name}.html">task {name}</a><br>\n'.format(**task)
+
     with open('index.html', 'r') as html:
         html_data = html.read()
+
     with open('index.html', 'w') as html:
         html.write(re.sub('(</body>)', (replace_text + '</body>'), html_data))
 
@@ -121,6 +120,7 @@ def insert_link_in_readme_md(files_data, file_name):
     """   вставляет в readme.md ссылку на файл задания после этого задания
     [html file](./name/name.html)
     """
+
     with open(file_name, 'r') as md_file:
         readme = md_file.read()
 
@@ -134,12 +134,15 @@ def insert_link_in_readme_md(files_data, file_name):
 
 the_file_data = collect_file_data(the_file_name)
 
-# for task in the_file_data:
-#     create_dir(task['name'])
-#     create_files(task)
 #
-# create_htmls(the_template_html, the_file_data)
+# for exercise in the_file_data:
+#     create_dir(exercise['name'])
+#     create_readme_md(exercise)
+#     create_app_js(exercise)
 
+
+# create_htmls(the_file_data)
+#
 # insert_link_in_index_html(the_file_data)
-
-insert_link_in_readme_md(the_file_data, the_file_name)
+#
+# insert_link_in_readme_md(the_file_data, the_file_name)
