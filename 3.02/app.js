@@ -6,3 +6,4 @@
 $('a').click(function () {
     this.append($(this).attr("href"))
 })
+
