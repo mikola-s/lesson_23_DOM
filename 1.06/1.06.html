@@ -3,20 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>1.06</title>
+    <style type="text/css">
+        #navigator{
+            max-width: 50%;
+            position: absolute;
+            right: 0;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        details{
+            margin-top: 40px;
+        }
+        #buttons {
+            position: fixed;
+            right: 10px;
+        }
+    </style>
 </head>
+
+<!--<script src="jquery-3.4.1.js"></script>-->
 <body>
 
-<div style="max-width: 50%; min-width: 400px">
-    <button id="prev" onclick="window.location='../1.05/1.05.html'">1.05</button>
-    <button id="home" onclick="window.location='../index.html'">table of content</button>
-    <button id="next" onclick="window.location='../2.01/2.01.html'">2.01</button>
+<div id="navigator">
+    <div id="buttons">
+        <button id="prev" onclick="window.location='../1.05/1.05.html'">1.05</button>
+        <button id="home" onclick="window.location='../index.html'">table of content</button>
+        <button id="next" onclick="window.location='../2.01/2.01.html'">2.01</button>
+    </div>
     <details>
         <summary>1.06 task (spoiler)</summary>
-        <p id="content">1.06. Делаем функцию $(), которая может принимать аргументом название класса, айди или название просто тега.
-Если это тег, то ишем по тегу и выводим эти елементы, которые мы нашли. Если это айди, то ишем по айди. Если это класс. Тоооо, если на сайте несколько таких класов, возварашаем как массив елементов, который нашли, если только один клас, то возвараем просто один елемент не в массиве!
-
-</p>
+        <p id="content">1.06. Делаем функцию $(), которая может принимать
+            аргументом название класса, айди или название просто тега.
+            Если это тег, то ишем по тегу и выводим эти елементы, которые мы нашли.
+            Если это айди, то ишем по айди. Если это класс. Тоооо, если на сайте
+            несколько таких класов, возварашаем как массив елементов, который нашли,
+            если только один клас, то возвараем просто один елемент не в массиве!
+        </p>
     </details>
 </div>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<div>5</div>
+<some_tag id="tag8" class="class1">тег "some_tag" с ID "tag2" и классом class2<br></some_tag>
+<!--  шкодить сюда   -->
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>
