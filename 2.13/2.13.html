@@ -3,19 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>2.13</title>
+    <style type="text/css">
+        #navigator{
+            max-width: 50%;
+            position: absolute;
+            right: 0;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        details{
+            margin-top: 40px;
+        }
+        #buttons {
+            position: fixed;
+            right: 10px;
+        }
+    </style>
 </head>
 <body>
 
-<div style="max-width: 50%; min-width: 400px">
-    <button id="prev" onclick="window.location='../2.12/2.12.html'">2.12</button>
-    <button id="home" onclick="window.location='../index.html'">table of content</button>
-    <button id="next" onclick="window.location='../2.14/2.14.html'">2.14</button>
+<div id="navigator">
+    <div id="buttons">
+        <button id="prev" onclick="window.location='../2.12/2.12.html'">2.12</button>
+        <button id="home" onclick="window.location='../index.html'">table of content</button>
+        <button id="next" onclick="window.location='../2.14/2.14.html'">2.14</button>
+    </div>
     <details>
         <summary>2.13 task (spoiler)</summary>
-        <p id="content">2.13. Дан элемент ul, а в нем li #myunique. Вставьте перед элементом #myunique новую li с текстом '!!!'.
+        <p id="content">2.13. Дан элемент ul, а в нем li #myunique.
+            Вставьте перед элементом #myunique новую li с текстом '!!!'.
 
 </p>
     </details>
 </div>
+
+
+<!--  шкодить сюда   -->
+
+<ol>
+    <li>первый</li>
+    <li>второй</li>
+    <li id="myunique">третий</li>
+    <li>четвертый</li>
+    <li>пятый</li>
+    <li>шестой</li>
+</ol>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>
