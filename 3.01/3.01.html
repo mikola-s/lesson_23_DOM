@@ -3,19 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>3.01</title>
+    <style type="text/css">
+        #navigator{
+            max-width: 50%;
+            position: absolute;
+            right: 0;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        details{
+            margin-top: 40px;
+        }
+        #buttons {
+            position: fixed;
+            right: 10px;
+        }
+    </style>
 </head>
 <body>
 
-<div style="max-width: 50%; min-width: 400px">
-    <button id="prev" onclick="window.location='../2.14/2.14.html'">2.14</button>
-    <button id="home" onclick="window.location='../index.html'">table of content</button>
-    <button id="next" onclick="window.location='../3.02/3.02.html'">3.02</button>
+<div id="navigator">
+    <div id="buttons">
+        <button id="prev" onclick="window.location='../2.14/2.14.html'">2.14</button>
+        <button id="home" onclick="window.location='../index.html'">table of content</button>
+        <button id="next" onclick="window.location='../3.02/3.02.html'">3.02</button>
+    </div>
     <details>
         <summary>3.01 task (spoiler)</summary>
-        <p id="content">3.01. Даны ссылки. Привяжите всем ссылкам событие - каждый раз по наведению на ссылку в конец атрибута title запишется её текст.
+        <p id="content">3.01. Даны ссылки. Привяжите всем ссылкам событие -
+            каждый раз по наведению на ссылку в конец атрибута title запишется её текст.
 
 </p>
     </details>
 </div>
+
+
+<!--  шкодить сюда   -->
+<a href="readme.md" id="a1">01</a><br>
+<a href="readme.md" id="a2">02</a><br>
+<a href="readme.md" id="a3">03</a><br>
+<a href="readme.md" id="a4">04</a><br>
+<a href="readme.md" id="a5">05</a><br>
+<a href="readme.md" id="a6">06</a><br>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>
