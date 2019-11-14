@@ -15,13 +15,14 @@ let argument = prompt('Пользователь! \n введи аргумент 
 
 function getInnerTextOfElement(arg) {
     if (arg != null) {
-        if (arg.startsWith('#')) {
-            return document.getElementById(arg.slice(1)).innerText
-        } else if (arg.startsWith('.')) {
-            // console.log(document.getElementsByClassName(arg.slice(1)))
-            return document.getElementsByClassName(arg.slice(1))[0].innerText
+        if (document.getElementById(arg.slice(1)) != null && arg.startsWith('#')) {
+            return `текст элемента с ИД "${arg}" \n 
+            ${document.getElementById(arg.slice(1)).innerText}`
+        } else if (document.getElementsByClassName(arg.slice(1)) != null && arg.startsWith('.')) {
+            return `текст первого элемента с классом "${arg}" \n 
+            ${document.getElementsByClassName(arg.slice(1))[0].innerText}`
         }
-        return false
+        return `"${arg}" нет такого элемента`
     }
 }
 
