@@ -3,19 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>2.14</title>
+    <style type="text/css">
+        #navigator{
+            max-width: 50%;
+            position: absolute;
+            right: 0;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        details{
+            margin-top: 40px;
+        }
+        #buttons {
+            position: fixed;
+            right: 10px;
+        }
+    </style>
 </head>
 <body>
 
-<div style="max-width: 50%; min-width: 400px">
-    <button id="prev" onclick="window.location='../2.13/2.13.html'">2.13</button>
-    <button id="home" onclick="window.location='../index.html'">table of content</button>
-    <button id="next" onclick="window.location='../3.01/3.01.html'">3.01</button>
+<div id="navigator">
+    <div id="buttons">
+        <button id="prev" onclick="window.location='../2.13/2.13.html'">2.13</button>
+        <button id="home" onclick="window.location='../index.html'">table of content</button>
+        <button id="next" onclick="window.location='../3.01/3.01.html'">3.01</button>
+    </div>
     <details>
         <summary>2.14 task (spoiler)</summary>
-        <p id="content">2.14. Дан элемент #elem. Найдите его соседа сверху и добавьте ему в конец текст '!'.
-
-</p>
+        <p id="content">2.14. Дан элемент #elem.
+            Найдите его соседа сверху и добавьте ему в конец текст '!'.
+        </p>
     </details>
 </div>
+
+
+<!--  шкодить сюда   -->
+<ol>
+    <li>первый</li>
+    <li>второй</li>
+    <li id="elem">третий</li>
+    <li>четвертый</li>
+    <li>пятый</li>
+    <li>шестой</li>
+</ol>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>
