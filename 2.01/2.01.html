@@ -3,19 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>2.01</title>
+    <style type="text/css">
+        #navigator{
+            max-width: 50%;
+            position: absolute;
+            right: 0;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        details{
+            margin-top: 40px;
+        }
+        #buttons {
+            position: fixed;
+            right: 10px;
+        }
+    </style>
 </head>
 <body>
 
-<div style="max-width: 50%; min-width: 400px">
-    <button id="prev" onclick="window.location='../1.06/1.06.html'">1.06</button>
-    <button id="home" onclick="window.location='../index.html'">table of content</button>
-    <button id="next" onclick="window.location='../2.02/2.02.html'">2.02</button>
+<div id="navigator">
+    <div id="buttons">
+        <button id="prev" onclick="window.location='../1.06/1.06.html'">1.06</button>
+        <button id="home" onclick="window.location='../index.html'">table of content</button>
+        <button id="next" onclick="window.location='../2.02/2.02.html'">2.02</button>
+    </div>
     <details>
         <summary>2.01 task (spoiler)</summary>
-        <p id="content">2.01. Высота body 4000px; Через каждые 3 секунды плавно крутите "ползунок" вниз и так же через секунду вверх. И так бесконечно раз
+        <p id="content">2.01. Высота body 4000px; Через каждые 3 секунды плавно крутите
+            "ползунок" вниз и так же через секунду вверх. И так бесконечно раз
 
 </p>
     </details>
 </div>
+
+
+<!--  шкодить сюда   -->
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>
