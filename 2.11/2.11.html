@@ -3,19 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>2.11</title>
+    <style type="text/css">
+        #navigator{
+            max-width: 50%;
+            position: absolute;
+            right: 0;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        details{
+            margin-top: 40px;
+        }
+        #buttons {
+            position: fixed;
+            right: 10px;
+        }
+    </style>
 </head>
 <body>
 
-<div style="max-width: 50%; min-width: 400px">
-    <button id="prev" onclick="window.location='../2.10/2.10.html'">2.10</button>
-    <button id="home" onclick="window.location='../index.html'">table of content</button>
-    <button id="next" onclick="window.location='../2.12/2.12.html'">2.12</button>
+<div id="navigator">
+    <div id="buttons">
+        <button id="prev" onclick="window.location='../2.10/2.10.html'">2.10</button>
+        <button id="home" onclick="window.location='../index.html'">table of content</button>
+        <button id="next" onclick="window.location='../2.12/2.12.html'">2.12</button>
+    </div>
     <details>
         <summary>2.11 task (spoiler)</summary>
-        <p id="content">2.11. Даны элементы с классом www. Добавьте каждому элементу в конец название его тега в нижнем регистре.
-
-</p>
+        <p id="content">2.11. Даны элементы с классом www.
+            Добавьте каждому элементу в конец название
+            его тега в нижнем регистре.
+        </p>
     </details>
 </div>
+
+
+<!--  шкодить сюда   -->
+<p class="www">заданный элемент 1 тег: </p>
+<h1 class="www">заданный элемент 2 тег: </h1>
+<tagmyunique id="myunique" class="www">заданный элемент 3 тег: </tagmyunique>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>
