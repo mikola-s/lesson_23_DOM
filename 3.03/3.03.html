@@ -3,19 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <title>3.03</title>
+    <style type="text/css">
+        #navigator{
+            max-width: 50%;
+            position: absolute;
+            right: 0;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        details{
+            margin-top: 40px;
+        }
+        #buttons {
+            position: fixed;
+            right: 10px;
+        }
+    </style>
 </head>
 <body>
 
-<div style="max-width: 50%; min-width: 400px">
-    <button id="prev" onclick="window.location='../3.02/3.02.html'">3.02</button>
-    <button id="home" onclick="window.location='../index.html'">table of content</button>
-    <button id="next" onclick="window.location='../3.04/3.04.html'">3.04</button>
+<div id="navigator">
+    <div id="buttons">
+        <button id="prev" onclick="window.location='../3.02/3.02.html'">3.02</button>
+        <button id="home" onclick="window.location='../index.html'">table of content</button>
+        <button id="next" onclick="window.location='../3.04/3.04.html'">3.04</button>
+    </div>
     <details>
         <summary>3.03 task (spoiler)</summary>
-        <p id="content">3.03. 5 ссылок как и в задаче 2. Только после трех кликов на ссылку следует убрать от нее событие, которое добавляет href в конец текста как в предыдушей задачи
+        <p id="content">3.03. 5 ссылок как и в задаче 2.
+            Только после трех кликов на ссылку следует убрать от нее событие,
+            которое добавляет href в конец текста как в предыдушей задачи
 
 </p>
     </details>
 </div>
+
+
+<!--  шкодить сюда   -->
+
+<!--https://google.com-->
+
+<a href="https://google.com">01</a><br>
+<a href="https://google.com">02</a><br>
+<a href="https://google.com">03</a><br>
+<a href="https://google.com">04</a><br>
+<a href="https://google.com">05</a><br>
+<a href="https://google.com">06</a><br>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>
