@@ -3,22 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <title>3.04</title>
+    <style type="text/css">
+        #navigator{
+            max-width: 50%;
+            position: absolute;
+            right: 0;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        details{
+            margin-top: 40px;
+        }
+        #buttons {
+            position: fixed;
+            right: 10px;
+        }
+    </style>
 </head>
 <body>
 
-<div style="max-width: 50%; min-width: 400px">
-    <button id="prev" onclick="window.location='../3.03/3.03.html'">3.03</button>
-    <button id="home" onclick="window.location='../index.html'">table of content</button>
-    <button id="next" onclick="window.location='../3.05/3.05.html'">3.05</button>
+<div id="navigator">
+    <div id="buttons">
+        <button id="prev" onclick="window.location='../3.03/3.03.html'">3.03</button>
+        <button id="home" onclick="window.location='../index.html'">table of content</button>
+        <button id="next" onclick="window.location='../3.05/3.05.html'">3.05</button>
+    </div>
     <details>
         <summary>3.04 task (spoiler)</summary>
-        <p id="content">3.04. Дано 20 абзацов с числами от 1 до 20. По нажатию на абзац в нем должен появится квадрат числа, которое он содержит. Так же написать мне код Emmet(как генерировать 20 абзацов).
-Разраешается написать 2 строки кода в js
-
-// Всё нужно писать через let, const, и стрелочными функциями
-
-</p>
+        <p id="content">3.04. Дано 20 абзацов с числами от 1 до 20.
+            По нажатию на абзац в нем должен появится квадрат числа, которое он содержит.
+            Так же написать мне код Emmet(как генерировать 20 абзацов).
+            Разраешается написать 2 строки кода в js
+            Всё нужно писать через let, const, и стрелочными функциями
+        </p>
     </details>
 </div>
+
+
+<!--  шкодить сюда   -->
+
+<!--код эммет p.expara{$}*20-->
+
+<p class="expara">1</p>
+<p class="expara">2</p>
+<p class="expara">3</p>
+<p class="expara">4</p>
+<p class="expara">5</p>
+<p class="expara">6</p>
+<p class="expara">7</p>
+<p class="expara">8</p>
+<p class="expara">9</p>
+<p class="expara">10</p>
+<p class="expara">11</p>
+<p class="expara">12</p>
+<p class="expara">13</p>
+<p class="expara">14</p>
+<p class="expara">15</p>
+<p class="expara">16</p>
+<p class="expara">17</p>
+<p class="expara">18</p>
+<p class="expara">19</p>
+<p class="expara">20</p>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>
