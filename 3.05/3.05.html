@@ -3,20 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>3.05</title>
+    <style type="text/css">
+        #navigator{
+            max-width: 50%;
+            position: absolute;
+            right: 0;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        details{
+            margin-top: 40px;
+        }
+        #buttons {
+            position: fixed;
+            right: 10px;
+        }
+    </style>
 </head>
 <body>
 
-<div style="max-width: 50%; min-width: 400px">
-    <button id="prev" onclick="window.location='../3.04/3.04.html'">3.04</button>
-    <button id="home" onclick="window.location='../index.html'">table of content</button>
-    <button id="next" onclick="window.location='../3.06/3.06.html'">3.06</button>
+<div id="navigator">
+    <div id="buttons">
+        <button id="prev" onclick="window.location='../3.04/3.04.html'">3.04</button>
+        <button id="home" onclick="window.location='../index.html'">table of content</button>
+        <button id="next" onclick="window.location='../3.06/3.06.html'">3.06</button>
+    </div>
     <details>
         <summary>3.05 task (spoiler)</summary>
-        <p id="content">3.05.  Привяжите всем ссылкам событие онклик - по клику на ссылку в конец ее текста дописывается ее href в круглых скобках. Внутри href должно быть по умолчанию https://google.com
-Приветсвуется самый короткий код не больше 100 символов на одной строке
-
-</p>
+        <p id="content">3.05.  Привяжите всем ссылкам событие онклик -
+            по клику на ссылку в конец ее текста дописывается ее href в круглых скобках.
+            Внутри href должно быть по умолчанию https://google.com
+            Приветсвуется самый короткий код не больше 100 символов на одной строке
+        </p>
     </details>
 </div>
+
+
+<!--  шкодить сюда   -->
+
+<!--(a[href=https://google.com]+br)*10-->
+
+<a href="https://google.com">1</a><br>
+<a href="https://google.com">2</a><br>
+<a href="https://google.com">3</a><br>
+<a href="https://google.com">4</a><br>
+<a href="https://google.com">5</a><br>
+<a href="https://google.com">6</a><br>
+<a href="https://google.com">7</a><br>
+<a href="https://google.com">8</a><br>
+<a href="https://google.com">9</a><br>
+<a href="https://google.com">10</a><br>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>
