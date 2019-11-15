@@ -3,19 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>3.06</title>
+    <style type="text/css">
+        #navigator{
+            max-width: 50%;
+            position: absolute;
+            right: 0;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        details{
+            margin-top: 40px;
+        }
+        #buttons {
+            position: fixed;
+            right: 10px;
+        }
+    </style>
 </head>
 <body>
 
-<div style="max-width: 50%; min-width: 400px">
-    <button id="prev" onclick="window.location='../3.05/3.05.html'">3.05</button>
-    <button id="home" onclick="window.location='../index.html'">table of content</button>
-    <button id="next" onclick="window.location='../3.07/3.07.html'">3.07</button>
+<div id="navigator">
+    <div id="buttons">
+        <button id="prev" onclick="window.location='../3.05/3.05.html'">3.05</button>
+        <button id="home" onclick="window.location='../index.html'">table of content</button>
+        <button id="next" onclick="window.location='../3.07/3.07.html'">3.07</button>
+    </div>
     <details>
         <summary>3.06 task (spoiler)</summary>
-        <p id="content">3.06. Создать button и повесить обработчик. При при нажатии должно выдавать alert("Hey")
+        <p id="content">3.06. Создать button и повесить обработчик.
+            При при нажатии должно выдавать alert("Hey")
 
 </p>
     </details>
 </div>
+
+
+<!--  шкодить сюда   -->
+
+<!-- button#ex -->
+
+<button id="but">кнопка</button>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>
