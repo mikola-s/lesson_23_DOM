@@ -3,19 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>3.17</title>
+    <style type="text/css">
+        body{
+            height: 2000px;
+        }
+        #navigator{
+            max-width: 50%;
+            position: absolute;
+            right: 0;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        details{
+            margin-top: 40px;
+        }
+        #buttons {
+            position: fixed;
+            right: 10px;
+        }
+    </style>
 </head>
 <body>
 
-<div style="max-width: 50%; min-width: 400px">
-    <button id="prev" onclick="window.location='../3.16/3.16.html'">3.16</button>
-    <button id="home" onclick="window.location='../index.html'">table of content</button>
-    <button id="next" onclick="window.location='../3.18/3.18.html'">3.18</button>
+<div id="navigator">
+    <div id="buttons">
+        <button id="prev" onclick="window.location='../3.16/3.16.html'">3.16</button>
+        <button id="home" onclick="window.location='../index.html'">table of content</button>
+        <button id="next" onclick="window.location='../3.18/3.18.html'">3.18</button>
+    </div>
     <details>
         <summary>3.17 task (spoiler)</summary>
-        <p id="content">3.17. Высота body 2000px; По нажатию на кнопку прокрутите страницу до самого низа
-
-</p>
+        <p id="content">3.17. Высота body 2000px;
+            По нажатию на кнопку прокрутите страницу до самого низа
+        </p>
     </details>
 </div>
+
+
+<!--  шкодить сюда   -->
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>
