@@ -3,19 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>3.16</title>
+    <style type="text/css">
+        #navigator{
+            max-width: 50%;
+            position: absolute;
+            right: 0;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        details{
+            margin-top: 40px;
+        }
+        #buttons {
+            position: fixed;
+            right: 10px;
+        }
+    </style>
 </head>
 <body>
 
-<div style="max-width: 50%; min-width: 400px">
-    <button id="prev" onclick="window.location='../3.15/3.15.html'">3.15</button>
-    <button id="home" onclick="window.location='../index.html'">table of content</button>
-    <button id="next" onclick="window.location='../3.17/3.17.html'">3.17</button>
+<div id="navigator">
+    <div id="buttons">
+        <button id="prev" onclick="window.location='../3.15/3.15.html'">3.15</button>
+        <button id="home" onclick="window.location='../index.html'">table of content</button>
+        <button id="next" onclick="window.location='../3.17/3.17.html'">3.17</button>
+    </div>
     <details>
         <summary>3.16 task (spoiler)</summary>
-        <p id="content">3.16. Дан инпут. Дана кнопка. По нажатию на кнопку клонируйте этот инпут и вставляйте рядом.
+        <p id="content">3.16. Дан инпут. Дана кнопка.
+            По нажатию на кнопку клонируйте этот инпут и вставляйте рядом.
 
 </p>
     </details>
 </div>
+
+
+<!--  шкодить сюда   -->
+
+<input value="это инпут">
+<br><button class="btn">Это кнопка</button>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>
