@@ -3,19 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>3.13</title>
+    <style type="text/css">
+        #navigator{
+            max-width: 50%;
+            position: absolute;
+            right: 0;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        details{
+            margin-top: 40px;
+        }
+        #buttons {
+            position: fixed;
+            right: 10px;
+        }
+    </style>
 </head>
 <body>
 
-<div style="max-width: 50%; min-width: 400px">
-    <button id="prev" onclick="window.location='../3.12/3.12.html'">3.12</button>
-    <button id="home" onclick="window.location='../index.html'">table of content</button>
-    <button id="next" onclick="window.location='../3.14/3.14.html'">3.14</button>
+<div id="navigator">
+    <div id="buttons">
+        <button id="prev" onclick="window.location='../3.12/3.12.html'">3.12</button>
+        <button id="home" onclick="window.location='../index.html'">table of content</button>
+        <button id="next" onclick="window.location='../3.14/3.14.html'">3.14</button>
+    </div>
     <details>
         <summary>3.13 task (spoiler)</summary>
-        <p id="content">3.13. Даны элементы с классом www$, $ - это инкремент. Добавьте каждому элементу в конец название его тега в нижнем регистре при нажатии. Каждый раз.
+        <p id="content">3.13. Даны элементы с классом www$,
+            $ - это инкремент. Добавьте каждому элементу в конец название
+            его тега в нижнем регистре при нажатии. Каждый раз.
 
 </p>
     </details>
 </div>
+
+
+<!--  шкодить сюда   -->
+
+<!--emmet p.www${class = www$ элемент}*10-->
+
+<p class="www1">class = www1 элемент </p>
+<p class="www2">class = www2 элемент </p>
+<p class="www3">class = www3 элемент </p>
+<p class="www4">class = www4 элемент </p>
+<p class="www5">class = www5 элемент </p>
+<p class="www6">class = www6 элемент </p>
+<p class="www7">class = www7 элемент </p>
+<p class="www8">class = www8 элемент </p>
+<p class="www9">class = www9 элемент </p>
+<p class="www10">class = www10 элемент </p>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>
