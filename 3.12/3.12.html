@@ -3,19 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>3.12</title>
+    <style type="text/css">
+        #navigator{
+            max-width: 50%;
+            position: absolute;
+            right: 0;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        details{
+            margin-top: 40px;
+        }
+        #buttons {
+            position: fixed;
+            right: 10px;
+        }
+    </style>
 </head>
 <body>
 
-<div style="max-width: 50%; min-width: 400px">
-    <button id="prev" onclick="window.location='../3.11/3.11.html'">3.11</button>
-    <button id="home" onclick="window.location='../index.html'">table of content</button>
-    <button id="next" onclick="window.location='../3.13/3.13.html'">3.13</button>
+<div id="navigator">
+    <div id="buttons">
+        <button id="prev" onclick="window.location='../3.11/3.11.html'">3.11</button>
+        <button id="home" onclick="window.location='../index.html'">table of content</button>
+        <button id="next" onclick="window.location='../3.13/3.13.html'">3.13</button>
+    </div>
     <details>
         <summary>3.12 task (spoiler)</summary>
-        <p id="content">3.12. Дан элемент #myunique. Узнайте количество его классов при нажатии и вставялйте в innerText.
-
-</p>
+        <p id="content">3.12. Дан элемент #myunique.
+            Узнайте количество его классов при нажатии и вставялйте в innerText.
+        </p>
     </details>
 </div>
+
+
+<!--  шкодить сюда   -->
+
+<p id="myunique" class="www zzz rrr">данный элемент</p>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>
