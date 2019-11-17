@@ -7,7 +7,7 @@ let presentArr = [1, 4, 5, [8, 0, 10, 3], 6, 64, 64, 54, {key: "name", age: 18}]
 function req(arr) {
     arr = arrayCheck(arr)
     let subArr = arrayCheck(arr.shift())
-    Array.isArray(subArr) ? req(subArr) : console.log(subArr)
+    Array.isArray(subArr) ? req(subArr) : $('body').append(`<p>${subArr}<\p>`)
 
     return arr.length ? req(arr) : null
 
