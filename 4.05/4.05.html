@@ -3,13 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>4.05</title>
+    <style type="text/css">
+        #navigator{
+            max-width: 50%;
+            position: absolute;
+            right: 0;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        details{
+            margin-top: 40px;
+        }
+        #buttons {
+            position: fixed;
+            right: 10px;
+        }
+    </style>
 </head>
 <body>
 
-<div style="max-width: 50%; min-width: 400px">
-    <button id="prev" onclick="window.location='../4.04/4.04.html'">4.04</button>
-    <button id="home" onclick="window.location='../index.html'">table of content</button>
-    <button id="next" onclick="window.location='../4.07/4.07.html'">4.07</button>
+<div id="navigator">
+    <div id="buttons">
+        <button id="prev" onclick="window.location='../4.04/4.04.html'">4.04</button>
+        <button id="home" onclick="window.location='../index.html'">table of content</button>
+        <button id="next" onclick="window.location='../4.07/4.07.html'">4.07</button>
+    </div>
     <details>
         <summary>4.05 task (spoiler)</summary>
         <p id="content">4.05. Дан массив с числами. Запишите в новый массив только те числа, которые больше нуля и меньше 10-ти. Для этого используйте вспомогательную функцию isNumberInRange из предыдущей задачи.
@@ -17,5 +36,12 @@
 </p>
     </details>
 </div>
+
+
+<!--  шкодить сюда   -->
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>
