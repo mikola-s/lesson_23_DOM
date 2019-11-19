@@ -23,9 +23,84 @@
 
 let pointsPerClick = [10, 8, 5, 2]
 
-for (let count = 4; count > 0; count--) { // создание мишени
-    $('body').append($('<div>', {'class': 'rounds', 'id': `round${count}`}))
+// $('body').append($('<audio>', { //фоновый звук птиц
+//     'id': 'ground',
+//     'autoplay' : 'autoplay',
+//     'loop' : 'loop',
+//     'src': 'sounds/ground.mp3',
+// }))
+
+// let audio = new Audio('sounds/ground.mp3')
+// audio.play();
+
+//====================================
+// $(document).one('click', () => {
+//     $('#ground')[0].play()
+//     alert('1')
+// })
+//====================================
+
+//====================================
+let promise = $('#ground')[0].play()
+
+if (promise !== undefined) {
+    promise.then(_ => {
+        console.log('Autoplay started!')
+    }).catch(error => {
+        console.log('was prevented')
+    });
 }
+
+
+
+$(document).one('click mouseover', () => {
+
+    console.log('1')
+})
+//====================================
+
+
+
+// $(document).trigger('click', () => {
+//     alert('2')
+//     // $(this).play()
+// })
+
+
+// $(window).trigger('mousemove', function() {
+//     alert('1')
+//     $('grond').play()
+// })
+
+//хренакостыль бл
+// let ground = document.getElementById('ground')
+// ground.initMouseEvent('click', true, true, window, 1, 12, 345, 7, 220, false, false, true, false, 0, null );
+// let event = new Event("click", {bubbles: true})
+// ground.dispatchEvent(event)
+
+// $(document).one('click', () => {
+//     document.getElementById('ground').play()
+// })
+
+for (let count = 4; count > 0; count--) { // создание мишени
+    $('body').append($('<div>', {
+        'class': 'rounds',
+        'id': `round${count}`
+    }))
+
+    $('body').append($('<audio>', {
+        'class': 'hitrounds',
+        'id': `hit_round${count}`,
+        'preload' : 'auto',
+        'src': `sounds/hit_round${count}.mp3`
+    }))
+}
+
+$('body').append($('<audio>', { //звук промаха
+    'id': 'misscatch',
+    'preload' : 'auto',
+    'src': `sounds/misscatch.mp3`
+}))
 
 
 moveDart() // движение дротика за курсором
@@ -33,7 +108,7 @@ moveDart() // движение дротика за курсором
 
 //заменяет дротик на летящий дротик и смещает его в указанные координаты
 function oneShot() {
-    $('#dart').attr('src', 'dart_fly.gif')
+    $('#dart').attr('src', 'imgs/dart_fly.gif')
     shiftDartImg(-27, 38)
 }
 
@@ -45,7 +120,7 @@ function shiftDartImg(shiftX, shiftY) {
 
 // возвращает дротик в исходное состояние после попадания
 function takeAim() {
-    $('#dart').attr('src', 'dart_200x200.png')
+    $('#dart').attr('src', 'imgs/dart_200x200.png')
     moveDart()
 }
 
@@ -58,7 +133,7 @@ function moveDart() {
     })
 }
 
-// возвтращает случайное целое число в диапазоне max, min включительно
+// возвращает случайное целое число в диапазоне max, min включительно
 function random(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
@@ -66,14 +141,18 @@ function random(min, max) {
 
 // запуск дротика
 $(document).click((event) => {
-    $(document).off('mousemove.dart')
-    oneShot()
+    $(document).off('mousemove.dart') // выключпет движение дротика за курсором
+    oneShot() //заменяет дротик на летящий дротик и смещает его в указанные координаты
     setTimeout(() => {
-        takeAim()
-        // $.playSound('')
+        takeAim() // отменяет oneShot() и включает движение дротика
         let hit = ($(document.elementFromPoint(event.pageX, event.pageY)).attr('id'))
-        if (hit != undefined && hit.indexOf('round') >= 0) {
+        if (hit == undefined) {
+            $('#misscatch')[0].play()
+        } else if (hit.indexOf(/(bird|egik)/) >= 0){
+            document.getElementById('hitbird').play()
+        } else if (hit.indexOf('round') >= 0){
             $('#result').text(Number($.text($('#result'))) + pointsPerClick[hit.slice(-1) - 1])
+            document.getElementById(`hit_round${hit.slice(-1)}`).play()
         }
     }, 700)
 })
@@ -86,18 +165,15 @@ setInterval(function () {
 }, 1500)
 
 
-let gameTime = 30;
-
-
-let timer = setInterval(function () {
-    gameTime -= 1
-    if (gameTime <= 0) {
-        clearInterval(timer);
-        //counter ended, do something here
-        return
-    }
-    $('#countdown').text(gameTime)
-}, 1000); //1000 will  run it every 1 second
-
+function countDown(){
+    let gameTime = 30
+    let timer = setInterval(function () { // обратный отсчет
+        if (gameTime > 0){
+            $('#countdown').text(gameTime--)
+        } else{
+            clearInterval(timer)
+        }
+    }, 1000);
+}
 
 setTimeout(() => location.reload(), 30000)
