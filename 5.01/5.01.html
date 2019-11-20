@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>5.01</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="sounds/ground.mp3" >
 </head>
 <body>
 
@@ -41,17 +42,22 @@
 
 <!-- new game -->
 <div id="new_game">
-    <h1>game timer</h1>
-    <h1 id="countdown">start</h1>
+    <h1>game timer <span id="countdown">0</span></h1>
 </div>
 
 
 <div id="result">0</div>
-<img id="dart" src="dart_200x200.png" alt="dart">
+<img id="dart" src="imgs/dart_200x200.png" alt="dart">
+<img id="egik" src="imgs/egik2.gif">
 
+<audio id="ground" autoplay="autoplay" loop="loop" src="sounds/ground.mp3"></audio>
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<script src="app.js"></script>
+<script src="js/app.js"></script>
+<script src="js/birds&egik.js"></script>
+
+
+
 
 </body>
 </html>

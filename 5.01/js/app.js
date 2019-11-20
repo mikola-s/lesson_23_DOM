@@ -21,90 +21,124 @@
 // или же того, что вы придумаете.(В пределах разумного)
 
 
-let pointsPerClick = [10, 8, 5, 2]
+let pointsPerClick = [10, 8, 5, 2] // начисляемые очки за попадание
 
-// $('body').append($('<audio>', { //фоновый звук птиц
-//     'id': 'ground',
-//     'autoplay' : 'autoplay',
-//     'loop' : 'loop',
-//     'src': 'sounds/ground.mp3',
-// }))
+createCrutches() // костыль для фонового звука
 
-// let audio = new Audio('sounds/ground.mp3')
-// audio.play();
+createTarget() // создание мишени
 
-//====================================
-// $(document).one('click', () => {
-//     $('#ground')[0].play()
-//     alert('1')
-// })
-//====================================
-
-//====================================
-let promise = $('#ground')[0].play()
-
-if (promise !== undefined) {
-    promise.then(_ => {
-        console.log('Autoplay started!')
-    }).catch(error => {
-        console.log('was prevented')
-    });
-}
-
-
-
-$(document).one('click mouseover', () => {
-
-    console.log('1')
-})
-//====================================
-
-
-
-// $(document).trigger('click', () => {
-//     alert('2')
-//     // $(this).play()
-// })
-
-
-// $(window).trigger('mousemove', function() {
-//     alert('1')
-//     $('grond').play()
-// })
-
-//хренакостыль бл
-// let ground = document.getElementById('ground')
-// ground.initMouseEvent('click', true, true, window, 1, 12, 345, 7, 220, false, false, true, false, 0, null );
-// let event = new Event("click", {bubbles: true})
-// ground.dispatchEvent(event)
-
-// $(document).one('click', () => {
-//     document.getElementById('ground').play()
-// })
-
-for (let count = 4; count > 0; count--) { // создание мишени
-    $('body').append($('<div>', {
-        'class': 'rounds',
-        'id': `round${count}`
-    }))
-
-    $('body').append($('<audio>', {
-        'class': 'hitrounds',
-        'id': `hit_round${count}`,
-        'preload' : 'auto',
-        'src': `sounds/hit_round${count}.mp3`
-    }))
-}
-
-$('body').append($('<audio>', { //звук промаха
-    'id': 'misscatch',
-    'preload' : 'auto',
-    'src': `sounds/misscatch.mp3`
-}))
-
+createBirds() //создание птиц
 
 moveDart() // движение дротика за курсором
 
+flyDartEvent() // событие -- полет дротика
+
+gameLoop() // обновление игры каждые 30 секунд
+
+
+// обновление игры каждые 30 секунд
+function gameLoop(timeSec=30){
+    countDown()
+    $('#result').text(0)
+
+    setInterval(() => {
+        countDown()
+        $('#result').text(0)
+    }, timeSec*1000)
+}
+
+
+// создание мишени
+function createTarget() {
+    for (let count = 4; count > 0; count--) { // создание мишени
+        $('body').append($('<div>', {
+            'class': 'rounds',
+            'id': `round${count}`
+        }))
+
+        $('body').append($('<audio>', {
+            'class': 'hitrounds',
+            'id': `hit_round${count}`,
+            'preload': 'auto',
+            'src': `sounds/hit_round${count}.mp3`
+        }))
+    }
+
+    $('body').append($('<audio>', { //звук промаха
+        'id': 'misscatch',
+        'preload': 'auto',
+        'src': `sounds/misscatch.mp3`
+    }))
+
+    setRandomElementPosition(30, 80, '.rounds') // случайные движения мишени
+}
+
+
+// создание птиц
+function createBirds() {
+    for (let count = 4; count > 0; count--) {
+        $('body').append($('<img>', {
+            'class': 'birds',
+            'id': `bird${count}`,
+            'src': `imgs/bird${count}.gif`
+        }))
+        setRandomElementPosition(15, 85, `#bird${count}`, 1500) // случайные движения птицы
+    }
+
+    $('body').append($('<audio>', { //попадание по птице
+        'id': 'hitbird',
+        'preload': 'auto',
+        'src': 'sounds/hit_bird.mp3'
+    }))
+}
+
+
+
+// случайные движения элементов
+function setRandomElementPosition(min=30, max=80, element, timeout=1500){
+    setInterval(function () {
+        $(element).css('left', `calc(${random(min, max)}%)`)
+        $(element).css('top', `calc(${random(min, max)}%)`)
+    }, timeout)
+}
+
+
+// костыль для фонового звука
+function createCrutches() {
+    let promise = $('#ground')[0].play()
+
+    if (promise !== undefined) {
+        promise
+            .then(() => {console.log('Autoplay started!')})
+            .catch(error => {
+            $(document).one('click', () => {
+                $('#ground')[0].play()
+            })
+        })
+    }
+}
+
+
+// событие -- полет дротика
+function flyDartEvent(){
+    $(document).click((event) => {
+        $(document).off('mousemove.dart') // выключпет движение дротика за курсором
+        oneShot() //заменяет дротик на летящий дротик и смещает его в указанные координаты
+        setTimeout(() => {
+            takeAim() // отменяет oneShot() и включает движение дротика
+            let hit = ($(document.elementFromPoint(event.pageX, event.pageY)).attr('id'))
+            if (hit == undefined) {
+                $('#misscatch')[0].play()
+            } else if (hit.indexOf('bird') >= 0 || hit.indexOf('egik') >= 0 ) {
+                $('#hitbird')[0].play()
+            } else if (hit.indexOf('round') >= 0) {
+                $('#result').text(Number($.text($('#result'))) + pointsPerClick[hit.slice(-1) - 1])
+                $(`#hit_round${hit.slice(-1)}`)[0].play()
+                // document.getElementById(`hit_round${hit.slice(-1)}`).play()
+            }
+        }, 700)
+    })
+}
 
 //заменяет дротик на летящий дротик и смещает его в указанные координаты
 function oneShot() {
@@ -112,17 +146,20 @@ function oneShot() {
     shiftDartImg(-27, 38)
 }
 
+
 // смещает дротик в указанные координаты
 function shiftDartImg(shiftX, shiftY) {
     $('#dart').css('left', `${Number($('#dart').css('left').slice(0, -2)) + shiftX}px`)
     $('#dart').css('top', `${Number($('#dart').css('top').slice(0, -2)) + shiftY}px`)
 }
 
+
 // возвращает дротик в исходное состояние после попадания
 function takeAim() {
     $('#dart').attr('src', 'imgs/dart_200x200.png')
     moveDart()
 }
+
 
 // создает/возобновляет движение дротика за курсором
 function moveDart() {
@@ -133,47 +170,22 @@ function moveDart() {
     })
 }
 
+
 // возвращает случайное целое число в диапазоне max, min включительно
 function random(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
 
-// запуск дротика
-$(document).click((event) => {
-    $(document).off('mousemove.dart') // выключпет движение дротика за курсором
-    oneShot() //заменяет дротик на летящий дротик и смещает его в указанные координаты
-    setTimeout(() => {
-        takeAim() // отменяет oneShot() и включает движение дротика
-        let hit = ($(document.elementFromPoint(event.pageX, event.pageY)).attr('id'))
-        if (hit == undefined) {
-            $('#misscatch')[0].play()
-        } else if (hit.indexOf(/(bird|egik)/) >= 0){
-            document.getElementById('hitbird').play()
-        } else if (hit.indexOf('round') >= 0){
-            $('#result').text(Number($.text($('#result'))) + pointsPerClick[hit.slice(-1) - 1])
-            document.getElementById(`hit_round${hit.slice(-1)}`).play()
-        }
-    }, 700)
-})
-
-
-// случайные движения мишени
-setInterval(function () {
-    $('.rounds').css('left', `calc(${random(30, 80)}%)`)
-    $('.rounds').css('top', `calc(${random(30, 70)}%)`)
-}, 1500)
-
-
-function countDown(){
-    let gameTime = 30
+// показывает оставшееся время текущей игры
+function countDown(gameTime = 30) {
     let timer = setInterval(function () { // обратный отсчет
-        if (gameTime > 0){
+        if (gameTime > 0) {
             $('#countdown').text(gameTime--)
-        } else{
+        } else {
             clearInterval(timer)
         }
     }, 1000);
 }
 
-setTimeout(() => location.reload(), 30000)
+

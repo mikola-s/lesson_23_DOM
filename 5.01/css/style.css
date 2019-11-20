@@ -43,7 +43,6 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    /*background-color: red;*/
     transform: translate(-50%, -50%);
     border-radius: 50%;
     transition: 0.3s all;
@@ -88,4 +87,23 @@ body {
     width: 100%;
     text-align: center;
     /*border: 1px solid red;*/
+}
+
+#egik {
+    width: 100px;
+    height: 100px;
+    /*align-self: ;*/
+    position: fixed;
+    bottom: 0;
+    left: 45%;
+}
+
+.birds {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 3500ms all;
+    width: 100px;
+    /*height: 100px;*/
 }
